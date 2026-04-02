@@ -15,6 +15,9 @@ class DashboardController extends Controller
 {
         $today = $this->todaySummary();
         $weeklySales = $this->weeklySales();
+        $lowStocks = $this->lowStocks();
+        $emptyStocks = $this->emptyStocks();
+        $totalProducts = Product::count();
 }
 
 }
