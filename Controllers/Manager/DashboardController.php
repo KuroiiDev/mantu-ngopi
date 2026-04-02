@@ -10,5 +10,11 @@ use App\Models\Product;
 use App\Models\Restock;
 use App\Models\PasswordResetRequest;
 class DashboardController extends Controller
+
+public function index()
+{
+}
+
+
 {
 }
