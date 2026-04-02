@@ -18,6 +18,8 @@ class DashboardController extends Controller
         $lowStocks = $this->lowStocks();
         $emptyStocks = $this->emptyStocks();
         $totalProducts = Product::count();
+        $recentTransaction = Transaction::with('user')->latest()->limit(5)->get();
+        $topProducts = $this->topProducts();
 }
 
 }
