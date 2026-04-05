@@ -17,7 +17,7 @@ class RestockController extends Controller
         $weeklySale = $this->weeklySale();
         $lowStock = $this->lowStock();
         $emptyStock = $this->emptyStock();
-        $totalProduct = Product::count();
+        $totalProducts = Products::count();
         $recentTransaction = Transaction::with('user')->latest()->limit(5)->get();
         $topProduct = $this->topProduct();
 }
