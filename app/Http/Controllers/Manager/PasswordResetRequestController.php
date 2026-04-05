@@ -18,6 +18,6 @@ class PasswordResetRequestController extends Controller
         $lowStock = $this->lowStock();
         $emptyStock = $this->emptyStock();
         $totalProduct = Product::count();
-        $recentTransaction = Transaction::with('user')->latest()->limit(5)->get();
+        $recentTransactions = Transactions::with('user')->latest()->limit(5)->get();
         $topProduct = $this->topProduct();
 }
