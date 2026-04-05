@@ -9,7 +9,7 @@ use App\Models\Supply;
 use App\Models\Product;
 use App\Models\Restock;
 use App\Models\PasswordResetRequest;
-class RestockController extends Controller
+class PasswordResetRequestController extends Controller
 {
     public function index()
 {
