@@ -14,8 +14,8 @@ class SupplyController extends Controller
     public function index()
 {
         $today = $this->todaySummary();
-        $weeklySale = $this->weeklySale();
-        $lowStock = $this->lowStock();
+        $weeklySales = $this->weeklySales();
+        $lowStocks = $this->lowStocks();
         $emptyStock = $this->emptyStock();
         $totalProduct = Product::count();
         $recentTransaction = Transaction::with('user')->latest()->limit(5)->get();
