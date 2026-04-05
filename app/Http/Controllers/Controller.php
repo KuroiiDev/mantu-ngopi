@@ -9,17 +9,17 @@ use App\Models\Supply;
 use App\Models\Product;
 use App\Models\Restock;
 use App\Models\PasswordResetRequest;
-class DashboardController extends Controller
+class SupplyController extends Controller
 {
     public function index()
 {
         $today = $this->todaySummary();
-        $weeklySales = $this->weeklySales();
-        $lowStocks = $this->lowStocks();
-        $emptyStocks = $this->emptyStocks();
-        $totalProducts = Product::count();
+        $weeklySale = $this->weeklySale();
+        $lowStock = $this->lowStock();
+        $emptyStock = $this->emptyStock();
+        $totalProduct = Product::count();
         $recentTransaction = Transaction::with('user')->latest()->limit(5)->get();
-        $topProducts = $this->topProducts();
+        $topProduct = $this->topProduct();
 }
 
 }
