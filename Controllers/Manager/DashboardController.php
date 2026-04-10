@@ -76,8 +76,8 @@ private function emptyStocks()
     return Supply::where('qty', '<=', 0)
         ->get(['id', 'name', 'qty', 'unit']);
 }
-public function exportExcel(Request $request)
-{
-    // nanti
-}
+    public function exportExcel(Request $request)
+    {
+        // nanti
+    }
 }
