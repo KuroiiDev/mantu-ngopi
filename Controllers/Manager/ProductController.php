@@ -63,4 +63,17 @@ public function edit(Product $product)
     $product->load('supplies');
     return view('manager.products.edit', compact('product', 'categories', 'supplies'));
 }
+public function update(Request $request, Product $product)
+{
+    $validated = $request->validate([
+        'name' => 'required|string|unique:products,name,' . $product->id,
+        'price' => 'required|numeric',
+        'image' => 'nullable|image|max:2048',
+        'category_id' => 'required|exists:categories,id',
+        'supplies' => 'nullable|array',
+        'supplies.*.supply_id' => 'required|exists:supplies,id',
+        'supplies.*.qty' => 'required|numeric|min:0',
+        'supplies.*.unit' => 'required|in:Kg,L',
+    ]);
+}
 }
