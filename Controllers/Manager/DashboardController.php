@@ -20,6 +20,23 @@ class DashboardController extends Controller
         $totalProducts = Product::count();
         $recentTransactions = Transaction::with('user')->latest()->limit(5)->get();
         $topProducts = $this->topProducts();
+        $recentRestocks = Restock::with(['supply', 'user'])->latest()->limit(5)->get();
+        $passwordRequests = PasswordResetRequest::with('user')
+             ->where('status', 'pending')
+            ->latest()
+            ->get();
+
+        return view('manager.dashboard', compact(
+        'today',
+        'weeklySales',
+        'lowStocks',
+        'emptyStocks',
+        'totalProducts',
+        'recentTransactions',
+        'topProducts',
+        'recentRestocks',
+        'passwordRequests'
+));
 }
 
 }
