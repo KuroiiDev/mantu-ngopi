@@ -65,5 +65,10 @@ private function topProducts()
         ->limit(5)
         ->get(['id', 'name', 'price']);
 }
-
+private function lowStocks()
+{
+    return Supply::where('qty', '>', 0)
+        ->where('qty', '<', 10)
+        ->get(['id', 'name', 'qty', 'unit']);
+}
 }
