@@ -41,5 +41,15 @@ if ($request->hasFile('image')) {
 
 $product = Product::create($validated);
 
+if (!empty($validated['supplies'])) {
+    $product->supplies()->sync(
+        collect($validated['supplies'])->mapWithKeys(fn($s) => [
+            $s['supply_id'] => ['qty' => $s['qty'], 'unit' => $s['unit']]
+        ])->toArray()
+    )
+}
+
+return redirect()->route('manager.products.index')
+    ->with('success', 'Menu berhasil ditambahkan!');
 }
 }
