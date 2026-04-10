@@ -38,5 +38,15 @@ class DashboardController extends Controller
         'passwordRequests'
 ));
 }
+private function todaySummary()
+{
+    $transactions = Transaction::whereDate('created_at', today())
+        ->where('status', 'paid')
+        ->get();
 
+    return [
+        'total_orders' => $transactions->count(),
+        'total_revenue' => $transactions->sum('total'),
+    ];
+}
 }
