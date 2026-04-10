@@ -35,5 +35,11 @@ public function store(Request $request)
         'supplies.*.qty' => 'required|numeric|min:0',
         'supplies.*.unit' => 'required|in:Kg,L',
     ]);
+if ($request->hasFile('image')) {
+    $validated['image'] = $request->file('image')->store('products', 'public');
+}
+
+$product = Product::create($validated);
+
 }
 }
