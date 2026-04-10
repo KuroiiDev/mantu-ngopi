@@ -85,5 +85,18 @@ public function update(Request $request, Product $product)
 }
 
 $product->update($validated);
+
+if (isset($request->supplies)) {
+    $product->supplies()->sync(
+        collect($request->supplies)->mapWithKeys(fn($s) => [
+            $s['supply_id'] => ['qty' => $s['qty'], 'unit' => $s['unit']]
+        ])->toArray()
+    );
+} else {
+    $product->supplies()->detach();
+}
+
+return redirect()->route('manager.products.index')
+    ->with('success', 'Menu berhasil diupdate!');
 }
 }
