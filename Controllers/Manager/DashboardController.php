@@ -49,4 +49,13 @@ private function todaySummary()
         'total_revenue' => $transactions->sum('total'),
     ];
 }
+private function weeklySales()
+{
+    return Transaction::selectRaw('DATE(created_at) as date, SUM(total) as revenue, COUNT(*) as total_orders')
+        ->where('status', 'paid')
+        ->whereBetween('created_at', [now()->subDays(6)->startOfDay(), now()->endOfDay()])
+        ->groupBy('date')
+        ->orderBy('date')
+        ->get();
+}
 }
