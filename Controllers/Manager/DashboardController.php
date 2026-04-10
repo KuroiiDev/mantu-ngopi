@@ -71,7 +71,7 @@ private function lowStocks()
         ->where('qty', '<', 10)
         ->get(['id', 'name', 'qty', 'unit']);
 }
-private function emptyStock()
+private function emptyStocks()
 {
     return Supply::where('qty', '<=', 0)
         ->get(['id', 'name', 'qty', 'unit']);
