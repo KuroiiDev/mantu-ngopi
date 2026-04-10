@@ -84,6 +84,6 @@ public function update(Request $request, Product $product)
     unset($validated['image']);
 }
 
-$product->update($validated)
+$product->update($validated);
 }
 }
