@@ -11,4 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
+public function index()
+{
+    $products = Product::with(['category', 'supplies'])->get();
+    return view('manager.products.index', compact('products'));
+}
+
 }
