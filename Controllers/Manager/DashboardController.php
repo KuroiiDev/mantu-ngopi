@@ -58,4 +58,11 @@ private function weeklySales()
         ->orderBy('date')
         ->get();
 }
+private function topProducts()
+{
+    return Product::withSum('transactions as total_qty', 'product_transaction_r.qty')
+        ->orderByDesc('total_qty')
+        ->limit(5)
+        ->get(['id', 'name', 'price']);
+}
 }
