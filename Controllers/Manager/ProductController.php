@@ -99,4 +99,15 @@ if (isset($request->supplies)) {
 return redirect()->route('manager.products.index')
     ->with('success', 'Menu berhasil diupdate!');
 }
+public function destroy(Product $product)
+{
+    if ($product->image) {
+        Storage::disk('public')->delete($product->image);
+    }
+
+    $product->delete();
+
+    return redirect()->route('manager.products.index')
+        ->with('success', 'Menu berhasil dihapus!');
+}
 }
