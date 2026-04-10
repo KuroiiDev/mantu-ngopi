@@ -17,4 +17,10 @@ public function index()
     return view('manager.products.index', compact('products'));
 }
 
+public function create()
+{
+    $categories = Category::all();
+    $supplies = Supply::select('id', 'name', 'price', 'unit')->get();
+    return view('manager.products.create', compact('categories', 'supplies'));
+}
 }
