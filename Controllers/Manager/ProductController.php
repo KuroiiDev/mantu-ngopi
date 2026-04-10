@@ -26,7 +26,7 @@ public function create()
 public function store(Request $request)
 {
     $validated = $request->validate([
-        'name' => 'requred|string|unique:products',
+        'name' => 'required|string|unique:products',
         'price' => 'required|numeric',
         'image' => 'nullable|image|max:2048',
         'category_id' => 'required|exists:categories,id',
