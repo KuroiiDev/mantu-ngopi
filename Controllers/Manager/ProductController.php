@@ -75,5 +75,15 @@ public function update(Request $request, Product $product)
         'supplies.*.qty' => 'required|numeric|min:0',
         'supplies.*.unit' => 'required|in:Kg,L',
     ]);
+    if ($request->hasFile('image')) {
+    if ($product->image) {
+        Storage::disk('public')->delete($product->image);
+    }
+    $validated['image'] = $request->file('image')->store('products', 'public');
+} else {
+    unset($validated['image']);
+}
+
+$product->update($validated)
 }
 }
