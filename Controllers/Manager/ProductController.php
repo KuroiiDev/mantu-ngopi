@@ -46,10 +46,21 @@ if (!empty($validated['supplies'])) {
         collect($validated['supplies'])->mapWithKeys(fn($s) => [
             $s['supply_id'] => ['qty' => $s['qty'], 'unit' => $s['unit']]
         ])->toArray()
-    )
+    );
 }
-
 return redirect()->route('manager.products.index')
     ->with('success', 'Menu berhasil ditambahkan!');
+}
+public function show(Product $product)
+{
+    return redirect()->route('manager.products.edit', $product);
+}
+
+public function edit(Product $product)
+{
+    $categories = Category::all();
+    $supplies = Supply::select('id', 'name', 'price', 'unit')->get();
+    $product->load('supplies');
+    return view('manager.products.edit', compact('product', 'categories', 'supplies'));
 }
 }
