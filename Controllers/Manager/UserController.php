@@ -18,4 +18,13 @@ class UserController extends Controller
 {
     return view('manager.users.create');
 }
+    public function store(Request $request)
+{
+    $validated = $request->validate([
+        'username' => 'required|string|unique:users',
+        'fullname' => 'required|string',
+        'password' => 'required|string|min:8|confirmed',
+        'role' => 'required|in:manager,cashier,logistic',
+    ]);
+}
 }
