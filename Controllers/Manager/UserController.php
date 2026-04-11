@@ -43,4 +43,13 @@ class UserController extends Controller
 {
     return view('manager.users.edit', compact('user'));
 }
+public function update(Request $request, User $user)
+{
+    $validated = $request->validate([
+        'username' => 'required|string|unique:users,username,' . $user->id,
+        'fullname' => 'required|string',
+        'password' => 'nullable|string|min:8|confirmed',
+        'role' => 'required|in:manager,cashier,logistic',
+    ]);
+}
 }
