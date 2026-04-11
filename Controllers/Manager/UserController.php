@@ -39,4 +39,8 @@ class UserController extends Controller
     $passwordRequests = $user->passwordResetRequests()->latest()->get();
     return view('manager.users.show', compact('user', 'passwordRequests'));
 }
+    public function edit(User $user)
+{
+    return view('manager.users.edit', compact('user'));
+}
 }
