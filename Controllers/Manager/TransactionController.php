@@ -14,5 +14,8 @@ class TransactionController extends Controller
     $transactions = Transaction::with(['user', 'products'])->latest()->get();
     return view('manager.transactions.index', compact('transactions'));
 }
-
+    public function show(Transaction $transaction)
+{
+    return view('manager.transactions.show', compact('transaction'));
+}
 }
