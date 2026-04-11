@@ -34,4 +34,8 @@ class UserController extends Controller
     return redirect()->route('manager.users.index')
     ->with('success', 'Akun berhasil dibuat!');
 }
+    public function show(User $user)
+{
+    return view('manager.users.show', compact('user'));
+}
 }
