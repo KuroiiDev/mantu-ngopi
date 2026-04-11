@@ -36,6 +36,7 @@ class UserController extends Controller
 }
     public function show(User $user)
 {
-    return view('manager.users.show', compact('user'));
+    $passwordRequests = $user->passwordResetRequests()->latest()->get();
+    return view('manager.users.show', compact('user', 'passwordRequests'));
 }
 }
