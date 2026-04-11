@@ -26,5 +26,7 @@ class UserController extends Controller
         'password' => 'required|string|min:8|confirmed',
         'role' => 'required|in:manager,cashier,logistic',
     ]);
+
+    $validated['password'] = Hash::make($validated['password']);
 }
 }
