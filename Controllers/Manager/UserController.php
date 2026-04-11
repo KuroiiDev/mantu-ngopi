@@ -62,4 +62,11 @@ public function update(Request $request, User $user)
     return redirect()->route('manager.users.index')
     ->with('success', 'Akun berhasil diupdate!');
 }
+    public function destroy(User $user)
+{
+    $user->delete();
+
+    return redirect()->route('manager.users.index')
+        ->with('success', 'Akun berhasil dihapus!');
+}
 }
