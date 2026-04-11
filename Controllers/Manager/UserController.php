@@ -55,6 +55,11 @@ public function update(Request $request, User $user)
     $validated['password'] = Hash::make($validated['password']);
     } else {
     unset($validated['password']);
-}
+    }
+
+    $user->update($validated);
+
+    return redirect()->route('manager.users.index')
+    ->with('success', 'Akun berhasil diupdate!');
 }
 }
