@@ -28,5 +28,10 @@ class UserController extends Controller
     ]);
 
     $validated['password'] = Hash::make($validated['password']);
+
+    User::create($validated);
+
+    return redirect()->route('manager.users.index')
+    ->with('success', 'Akun berhasil dibuat!');
 }
 }
