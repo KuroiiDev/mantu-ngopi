@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manager;
 
-abstract class Controller
+use App\Http\Controllers\Controller;
+
+class DashboardController extends Controller
 {
-    //
 }
