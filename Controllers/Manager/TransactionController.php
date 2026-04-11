@@ -16,6 +16,7 @@ class TransactionController extends Controller
 }
     public function show(Transaction $transaction)
 {
+    $transaction->load(['user', 'products']);
     return view('manager.transactions.show', compact('transaction'));
 }
 }
