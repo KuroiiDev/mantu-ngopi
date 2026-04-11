@@ -51,5 +51,10 @@ public function update(Request $request, User $user)
         'password' => 'nullable|string|min:8|confirmed',
         'role' => 'required|in:manager,cashier,logistic',
     ]);
+    if (!empty($validated['password'])) {
+    $validated['password'] = Hash::make($validated['password']);
+    } else {
+    unset($validated['password']);
+}
 }
 }
