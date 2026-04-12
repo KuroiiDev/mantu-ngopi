@@ -107,7 +107,7 @@
                 <div class="flex justify-between text-white font-semibold border-t border-gray-700 pt-2">
                     <span>Kembalian</span>
                     <span class="text-green-400">
-                        Rp {{ number_format($transaction->total - $transaction->paid, 0, ',', '.') }}
+                        Rp {{ number_format($transaction->paid - $transaction->total, 0, ',', '.') }}
                     </span>
                 </div>
             </div>
