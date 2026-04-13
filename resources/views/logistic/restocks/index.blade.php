@@ -25,7 +25,7 @@
                         <td class="px-4 py-3 text-gray-400">{{ $loop->iteration }}</td>
                         <td class="px-4 py-3 text-white">{{ $restock->supply->name }}</td>
                         <td class="px-4 py-3">
-                            <span class="text-white font-medium">+{{ $restock->qty_add }}</span>
+                            <span class="text-white font-medium">+{{ $restock->qty_added }}</span>
                             <span class="text-gray-500 text-xs ml-1">{{ $restock->supply->unit }}</span>
                         </td>
                         <td class="px-4 py-3 text-gray-300">
