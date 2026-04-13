@@ -44,7 +44,7 @@
                 <div class="flex justify-between items-center py-2 border-b border-gray-700">
                     <span class="text-gray-400">Jumlah Ditambahkan</span>
                     <span class="text-white">
-                        +{{ $restock->qty_add }} {{ $restock->supply->unit }}
+                        +{{ $restock->qty_added }} {{ $restock->supply->unit }}
                     </span>
                 </div>
                 <div class="flex justify-between items-center py-2 border-b border-gray-700">
