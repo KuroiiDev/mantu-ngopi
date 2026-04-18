@@ -20,8 +20,8 @@ class DashboardController extends Controller
             ->get();
 
         return view('logistic.dashboard', compact(
-            'lowStocks',
-            'emptyStocks',
+            'lowStock',
+            'emptyStock',
             'totalSupplies',
             'recentRestocks'
         ));
