@@ -11,7 +11,7 @@ class RestockController extends Controller
 {
     public function index()
     {
-        $restocks = Restock::with(['supply', 'user'])
+        $restock = Restock::with(['supply', 'user'])
             ->where('user_id', auth()->id())
             ->latest()
             ->get();
