@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $lowStock = $this->lowStock();
+        $lowStocks = $this->lowStocks();
         $emptyStock = $this->emptyStock();
         $totalSupplies = Supply::count();
         $recentRestocks = Restock::with(['supply', 'user'])
