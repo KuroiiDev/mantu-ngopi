@@ -15,7 +15,7 @@ class SupplyController extends Controller
 
     public function show(Supply $supply)
     {
-        $restocks = $supply->restocks()->with('user')->latest()->get();
+        $restock = $supply->restocks()->with('user')->latest()->get();
         return view('logistic.supplies.show', compact('supply', 'restocks'));
     }
 }
