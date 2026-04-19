@@ -11,8 +11,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $lowStock = $this->lowStock();
-        $emptyStock = $this->emptyStock();
+        $lowStocks = $this->lowStocks();
+        $emptyStocks = $this->emptyStock();
         $totalSupplies = Supply::count();
         $recentRestocks = Restock::with(['supply', 'user'])
             ->latest()
@@ -20,8 +20,8 @@ class DashboardController extends Controller
             ->get();
 
         return view('logistic.dashboard', compact(
-            'lowStock',
-            'emptyStock',
+            'lowStocks',
+            'emptyStocks',
             'totalSupplies',
             'recentRestocks'
         ));
