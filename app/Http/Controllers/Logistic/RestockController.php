@@ -11,11 +11,11 @@ class RestockController extends Controller
 {
     public function index()
     {
-        $restock = Restock::with(['supply', 'user'])
+        $restocks = Restock::with(['supply', 'user'])
             ->where('user_id', auth()->id())
             ->latest()
             ->get();
-        return view('logistic.restocks.index', compact('restocks'));
+        return view('logistic.restock.index', compact('restocks'));
     }
 
     public function show(Restock $restock)
