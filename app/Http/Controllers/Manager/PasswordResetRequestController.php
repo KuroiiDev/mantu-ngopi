@@ -12,7 +12,7 @@ use App\Models\PasswordResetRequest;
 class PasswordResetRequestController extends Controller
 {
     public function index()
-{
+    {
         $today = $this->todaySummary();
         $weeklySale = $this->weeklySale();
         $lowStock = $this->lowStock();
@@ -20,4 +20,5 @@ class PasswordResetRequestController extends Controller
         $totalProduct = Product::count();
         $recentTransactions = Transactions::with('user')->latest()->limit(5)->get();
         $topProduct = $this->topProduct();
+    }
 }
