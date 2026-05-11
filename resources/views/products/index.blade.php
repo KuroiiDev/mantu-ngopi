@@ -66,3 +66,23 @@
         ]),
     ];
 @endphp
+
+supplies: {{ Js::from(
+    \App\Models\Supply::all(['id', 'qty', 'reserved'])
+        ->keyBy('id')
+        ->map(fn($s) => ['qty' => $s->qty, 'reserved' => $s->reserved])
+) }},
+
+getEffectiveQty(supplyId) {
+    const s = this.supplies[supplyId]
+    if (!s) return 0
+    return s.qty - s.reserved
+},
+
+isProductAvailableForQty(product, requestedQty) {
+    for (const supply of product.supplies) {
+        const effective = this.getEffectiveQty(supply.supply_id)
+        if (effective < supply.pivot_qty * requestedQty) return false
+    }
+    return true
+},
