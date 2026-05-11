@@ -35,3 +35,21 @@
         return new Intl.NumberFormat('id-ID').format(Math.round(val))
     }
 }" class="pb-24"></div>
+
+{{-- Products by Category --}}
+<div class="space-y-8">
+    @foreach($categories as $category)
+        @if($category->products->count() > 0)
+            <div id="category-{{ $category->id }}">
+                <h2 class="text-base font-semibold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-purple-400 text-sm"></i>
+                    {{ $category->name }}
+                </h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+                </div>
+            </div>
+        @endif
+    @endforeach
+</div>
