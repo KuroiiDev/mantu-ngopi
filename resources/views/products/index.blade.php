@@ -114,3 +114,23 @@ addToCart(product) {
         this.cart.push({ ...product, qty: 1 })
     }
 },
+incrementQty(productId) {
+    const item = this.cart.find(i => i.id === productId)
+
+    if (!this.isProductAvailableForQty(item, item.qty + 1)) {
+        alert('Stok tidak mencukupi!')
+        return
+    }
+
+    item.qty++
+},
+
+decrementQty(productId) {
+    const item = this.cart.find(i => i.id === productId)
+
+    if (item.qty <= 1) {
+        this.removeFromCart(productId)
+    } else {
+        item.qty--
+    }
+},
