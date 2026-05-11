@@ -53,3 +53,16 @@
         @endif
     @endforeach
 </div>
+
+@php
+    $productData = [
+        'id' => $product->id,
+        'name' => $product->name,
+        'price' => $product->price,
+        'image' => $product->image ? Storage::url($product->image) : '',
+        'supplies' => $product->supplies->map(fn($s) => [
+            'supply_id' => $s->id,
+            'pivot_qty' => $s->pivot->qty,
+        ]),
+    ];
+@endphp
