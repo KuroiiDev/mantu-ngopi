@@ -19,3 +19,19 @@
         @endif
     @endforeach
 </div>
+
+<div x-data="{
+    cart: [],
+
+    get totalItems() {
+        return this.cart.reduce((sum, i) => sum + i.qty, 0)
+    },
+
+    get totalPrice() {
+        return this.cart.reduce((sum, i) => sum + (i.price * i.qty), 0)
+    },
+
+    formatRp(val) {
+        return new Intl.NumberFormat('id-ID').format(Math.round(val))
+    }
+}" class="pb-24"></div>
