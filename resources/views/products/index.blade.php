@@ -86,3 +86,14 @@ isProductAvailableForQty(product, requestedQty) {
     }
     return true
 },
+{{-- Badge Habis --}}
+<div x-show="!isProductAvailable({{ Js::from($productData) }})"
+    class="absolute top-2 left-2 z-10 px-2 py-0.5 bg-red-500/90 text-white text-xs rounded-full font-medium">
+    <i class="fa-solid fa-circle-xmark mr-1"></i>Habis
+</div>
+
+{{-- Badge Tipis --}}
+<div x-show="isProductAvailable({{ Js::from($productData) }}) && isProductLow({{ Js::from($productData) }})"
+    class="absolute top-2 left-2 z-10 px-2 py-0.5 bg-orange-500/90 text-white text-xs rounded-full font-medium">
+    <i class="fa-solid fa-triangle-exclamation mr-1"></i>Tipis
+</div>
