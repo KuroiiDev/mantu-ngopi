@@ -155,3 +155,19 @@ decrementQty(productId) {
 
     </div>
 </div>
+<form :action="'{{ route('cashier.transactions.store') }}'" method="POST">
+    @csrf
+
+    <template x-for="(item, index) in cart" :key="item.id">
+        <div>
+            <input type="hidden" :name="'products[' + index + '][product_id]'" :value="item.id">
+            <input type="hidden" :name="'products[' + index + '][qty]'" :value="item.qty">
+        </div>
+    </template>
+
+    <input type="text" name="customer" x-model="customer">
+
+    <button type="submit">
+        Buat Pesanan
+    </button>
+</form>
