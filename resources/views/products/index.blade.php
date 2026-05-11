@@ -97,3 +97,20 @@ isProductAvailableForQty(product, requestedQty) {
     class="absolute top-2 left-2 z-10 px-2 py-0.5 bg-orange-500/90 text-white text-xs rounded-full font-medium">
     <i class="fa-solid fa-triangle-exclamation mr-1"></i>Tipis
 </div>
+addToCart(product) {
+    if (!this.isProductAvailable(product)) return
+
+    const existing = this.cart.find(i => i.id === product.id)
+    const newQty = existing ? existing.qty + 1 : 1
+
+    if (!this.isProductAvailableForQty(product, newQty)) {
+        alert('Stok tidak mencukupi!')
+        return
+    }
+
+    if (existing) {
+        existing.qty++
+    } else {
+        this.cart.push({ ...product, qty: 1 })
+    }
+},
