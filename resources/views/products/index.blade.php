@@ -146,3 +146,12 @@ decrementQty(productId) {
 
     </button>
 </div>
+
+{{-- Modal Checkout --}}
+<div x-show="modalOpen"
+    class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/60">
+
+    <div class="w-full max-w-md bg-gray-800 rounded-2xl">
+
+    </div>
+</div>
