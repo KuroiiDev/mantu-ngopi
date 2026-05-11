@@ -134,3 +134,15 @@ decrementQty(productId) {
         item.qty--
     }
 },
+{{-- Floating Cart Bar --}}
+<div x-show="cart.length > 0"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-full max-w-lg px-4">
+
+    <button @click="modalOpen = true"
+        class="w-full flex items-center justify-between bg-purple-600">
+
+        <span x-text="totalItems"></span>
+        <span x-text="'Rp ' + formatRp(totalPrice)"></span>
+
+    </button>
+</div>
