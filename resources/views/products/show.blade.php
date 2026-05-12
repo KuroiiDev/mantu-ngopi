@@ -23,3 +23,11 @@
 
     </div>
 </div>
+@if($product->image)
+    <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"
+        class="w-48 aspect-square object-cover shrink-0">
+@else
+    <div class="w-48 aspect-square bg-gray-700 flex items-center justify-center shrink-0">
+        <i class="fa-solid fa-utensils text-gray-600 text-3xl"></i>
+    </div>
+@endif
