@@ -69,3 +69,12 @@
         </tr>
     </thead>
 </table>
+<tbody class="divide-y divide-gray-700">
+    @foreach($product->supplies as $supply)
+        <tr>
+            <td class="px-4 py-3 text-white">{{ $supply->name }}</td>
+            <td class="px-4 py-3 text-white">{{ $supply->pivot->qty }}</td>
+            <td class="px-4 py-3 text-gray-400">{{ $supply->pivot->unit }}</td>
+        </tr>
+    @endforeach
+</tbody>
