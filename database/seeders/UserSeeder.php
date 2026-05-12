@@ -13,13 +13,14 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = [
-            'username' => 'ImTheBoss',
-            'fullname' => 'Admin',
-            'password' => bcrypt('admin123'),
-            'role' => 'manager',
-            
+        $users = [
+            ['username' => 'manager', 'fullname' => 'Anggrek Mekar Pontianak', 'password' => bcrypt('admin123'), 'role' => 'manager'],
+            ['username' => 'kasir', 'fullname' => 'Roti Lapis bandung', 'password' => bcrypt('admin123'), 'role' => 'cashier'],
+            ['username' => 'logistik', 'fullname' => 'Uget Uget Boyolali', 'password' => bcrypt('admin123'), 'role' => 'logistic'],
         ];
-        User::insert($admin);
+
+        foreach ($users as $user) {
+            User::create($user);
+        }
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['pending', 'paid', 'cancelled', 'completed'])->default('pending');
-            $table->string('method')->nullable();
+            $table->enum('method', ['cash', 'transfer', 'qris'])->nullable();
             $table->double('paid')->nullable();
             $table->double('total');
             $table->string('customer')->nullable();

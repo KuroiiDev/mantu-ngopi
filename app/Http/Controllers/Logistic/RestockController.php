@@ -15,7 +15,7 @@ class RestockController extends Controller
             ->where('user_id', auth()->id())
             ->latest()
             ->get();
-        return view('logistic.restock.index', compact('restocks'));
+        return view('logistic.restocks.index', compact('restocks'));
     }
 
     public function show(Restock $restock)

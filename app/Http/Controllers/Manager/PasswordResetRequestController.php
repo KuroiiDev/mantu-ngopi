@@ -1,24 +1,29 @@
 <?php
 
 namespace App\Http\Controllers\Manager;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Transaction;
-use App\Models\Supply;
-use App\Models\Product;
-use App\Models\Restock;
+
 use App\Models\PasswordResetRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 class PasswordResetRequestController extends Controller
 {
-    public function index()
+    public function update(Request $request, PasswordResetRequest $passwordResetRequest)
     {
-        $today = $this->todaySummary();
-        $weeklySale = $this->weeklySale();
-        $lowStock = $this->lowStock();
-        $emptyStock = $this->emptyStock();
-        $totalProduct = Product::count();
-        $recentTransactions = Transactions::with('user')->latest()->limit(5)->get();
-        $topProduct = $this->topProduct();
+        $request->validate([
+            'status' => 'required|in:approved,rejected',
+        ]);
+
+        if ($request->status === 'approved') {
+            $passwordResetRequest->user->update([
+                'password' => $passwordResetRequest->new_password,
+            ]);
+        }
+
+        $passwordResetRequest->update(['status' => $request->status]);
+
+        return redirect()->back()
+            ->with('success', 'Request berhasil diproses!');
     }
 }

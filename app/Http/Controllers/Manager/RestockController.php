@@ -1,24 +1,30 @@
 <?php
 
 namespace App\Http\Controllers\Manager;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Transaction;
-use App\Models\Supply;
-use App\Models\Product;
+
 use App\Models\Restock;
-use App\Models\PasswordResetRequest;
+use App\Models\Supply;
+use Illuminate\Http\Request;
+
 class RestockController extends Controller
 {
     public function index()
     {
-        $today = $this->todaySummary();
-        $weeklySale = $this->weeklySale();
-        $lowStock = $this->lowStock();
-        $emptyStock = $this->emptyStock();
-        $totalProducts = Products::count();
-        $recentTransaction = Transaction::with('user')->latest()->limit(5)->get();
-        $topProduct = $this->topProduct();
+        $restocks = Restock::with(['supply', 'user'])->latest()->get();
+        return view('manager.restocks.index', compact('restocks'));
+    }
+
+    public function show(Restock $restock)
+    {
+        $restock->load(['supply', 'user']);
+        return view('manager.restocks.show', compact('restock'));
+    }
+
+    public function store(Request $request)
+    { /* nanti */
+    }
+    public function destroy(Restock $restock)
+    { /* nanti */
     }
 }

@@ -54,9 +54,6 @@
                         <td class="px-4 py-3 text-gray-300">
                             Rp {{ number_format($product->price, 0, ',', '.') }}
                         </td>
-                        <td class="px-4 py-3 text-gray-300">
-                            Rp {{ number_format($product->price, 0, ',', '.') }}
-                        </td>
                         <td class="px-4 py-3">
                             @php $status = $product->productStatus() @endphp
                             @if($status === 'habis')

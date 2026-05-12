@@ -130,15 +130,15 @@
         @if($transaction->status === 'pending')
             {{-- Form Bayar --}}
             <div class="bg-gray-800 rounded-xl border border-gray-700 p-6" x-data="{
-                            paid: {{ $transaction->total }},
-                            total: {{ $transaction->total }},
-                            get change() {
-                                return (parseFloat(this.paid) || 0) - this.total
-                            },
-                            formatRp(val) {
-                                return new Intl.NumberFormat('id-ID').format(Math.round(val))
-                            }
-                        }">
+                                            paid: {{ $transaction->total }},
+                                            total: {{ $transaction->total }},
+                                            get change() {
+                                                return (parseFloat(this.paid) || 0) - this.total
+                                            },
+                                            formatRp(val) {
+                                                return new Intl.NumberFormat('id-ID').format(Math.round(val))
+                                            }
+                                        }">
                 <h2 class="text-sm font-semibold text-gray-300 mb-4">Proses Pembayaran</h2>
                 <form action="{{ route('cashier.transactions.update', $transaction) }}" method="POST" class="space-y-3">
                     @csrf
@@ -197,24 +197,36 @@
             </div>
 
         @elseif($transaction->status === 'paid')
-            {{-- Selesaikan Pesanan --}}
+            {{-- Selesaikan Pesanan dan Cetak Struk --}}
             <div class="bg-gray-800 rounded-xl border border-gray-700 p-6">
                 <h2 class="text-sm font-semibold text-gray-300 mb-2">Selesaikan Pesanan</h2>
                 <p class="text-xs text-gray-500 mb-4">
                     <i class="fa-solid fa-circle-info mr-1"></i>
                     Tandai pesanan selesai setelah pesanan diserahkan ke pelanggan. Stok bahan baku akan berkurang otomatis.
                 </p>
-                <form action="{{ route('cashier.transactions.update', $transaction) }}" method="POST"
-                    onsubmit="return confirm('Tandai pesanan ini sebagai selesai?')">
-                    @csrf
-                    @method('PUT')
-                    <input type="hidden" name="action" value="complete">
-                    <button type="submit"
-                        class="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors">
-                        <i class="fa-solid fa-circle-check mr-2"></i>
-                        Tandai Selesai
-                    </button>
-                </form>
+                <div class="flex flex-col gap-3">
+
+                    {{-- Button Cetak Struk --}}
+                    <a href="{{ route('cashier.transactions.receipt', $transaction) }}" target="_blank"
+                        class="w-full mb-1 py-2.5 bg-gray-700 hover:bg-gray-600 text-white text-sm font-medium rounded-lg transition-colors text-center">
+                        <i class="fa-solid fa-print mr-2"></i>
+                        Cetak Struk
+                    </a>
+
+                    {{-- Button Selesaikan Pesanan --}}
+                    <form action="{{ route('cashier.transactions.update', $transaction) }}" method="POST"
+                        onsubmit="return confirm('Tandai pesanan ini sebagai selesai?')">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="action" value="complete">
+                        <button type="submit"
+                            class="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg transition-colors text-center">
+                            <i class="fa-solid fa-circle-check mr-2"></i>
+                            Tandai Selesai
+                        </button>
+                    </form>
+                    
+                </div>
             </div>
         @endif
 

@@ -146,7 +146,7 @@
                     <a href="{{ route('manager.transactions.show', $transaction) }}"
                         class="flex items-center justify-between py-2 border-b border-gray-700 last:border-0 hover:opacity-80 transition-opacity">
                         <div>
-                            <p class="text-sm text-white">{{ $transaction->customer ?? 'Umum' }}</p>
+                            <p class="text-sm text-white">{{ $transaction->customer ?? '-' }}</p>
                             <p class="text-xs text-gray-500">
                                 {{ $transaction->user->fullname }} · {{ $transaction->created_at->diffForHumans() }}
                             </p>
