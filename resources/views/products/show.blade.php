@@ -43,3 +43,10 @@
         {{ $product->category->name }}
     </span>
 </div>
+<div class="flex justify-between items-center py-2">
+    <span class="text-gray-400">Harga</span>
+
+    <span class="text-white font-semibold text-base">
+        Rp {{ number_format($product->price, 0, ',', '.') }}
+    </span>
+</div>
