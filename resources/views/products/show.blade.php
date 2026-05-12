@@ -36,3 +36,10 @@
         {{ $product->name }}
     </h2>
 </div>
+<div class="flex justify-between items-center py-2 border-b border-gray-700">
+    <span class="text-gray-400">Kategori</span>
+
+    <span class="px-2 py-0.5 bg-purple-500/10 text-purple-400 text-xs rounded-full">
+        {{ $product->category->name }}
+    </span>
+</div>
