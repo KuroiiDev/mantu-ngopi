@@ -18,3 +18,8 @@
 </div>
 <div class="max-w-2xl mx-auto space-y-4">
 </div>
+<div class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+    <div class="flex">
+
+    </div>
+</div>
