@@ -78,3 +78,6 @@
         </tr>
     @endforeach
 </tbody>
+class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden"
+class="transition-colors"
+class="space-y-4"
