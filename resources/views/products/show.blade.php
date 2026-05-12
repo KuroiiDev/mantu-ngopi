@@ -50,3 +50,8 @@
         Rp {{ number_format($product->price, 0, ',', '.') }}
     </span>
 </div>
+@if($product->supplies->count() > 0)
+    <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+
+    </div>
+@endif
