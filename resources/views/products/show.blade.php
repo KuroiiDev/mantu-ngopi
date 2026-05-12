@@ -31,3 +31,8 @@
         <i class="fa-solid fa-utensils text-gray-600 text-3xl"></i>
     </div>
 @endif
+<div class="flex-1 p-5 space-y-3 text-sm">
+    <h2 class="text-base font-semibold text-white">
+        {{ $product->name }}
+    </h2>
+</div>
