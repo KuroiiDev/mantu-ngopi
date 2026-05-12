@@ -55,3 +55,8 @@
 
     </div>
 @endif
+<div class="px-5 py-4 border-b border-gray-700">
+    <h2 class="text-sm font-semibold text-gray-300">
+        Bahan Baku
+    </h2>
+</div>
