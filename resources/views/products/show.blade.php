@@ -60,3 +60,12 @@
         Bahan Baku
     </h2>
 </div>
+<table class="w-full text-sm">
+    <thead>
+        <tr class="border-b border-gray-700">
+            <th class="text-left px-4 py-3 text-gray-400 font-medium">Nama Bahan</th>
+            <th class="text-left px-4 py-3 text-gray-400 font-medium">Qty</th>
+            <th class="text-left px-4 py-3 text-gray-400 font-medium">Satuan</th>
+        </tr>
+    </thead>
+</table>
