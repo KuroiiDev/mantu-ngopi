@@ -109,6 +109,7 @@ Route::prefix('manager')->middleware(['auth', 'role:manager'])->group(function (
         'destroy' => 'manager.supplies.destroy',
     ]);
 
+    Route::get('/restocks/export', [ManagerRestock::class, 'export'])->name('manager.restocks.export');
     Route::resource('restocks', ManagerRestock::class)
         ->only(['index', 'show', 'destroy'])
         ->names([
@@ -117,6 +118,7 @@ Route::prefix('manager')->middleware(['auth', 'role:manager'])->group(function (
             'destroy' => 'manager.restocks.destroy',
         ]);
 
+    Route::get('/transactions/export', [ManagerTransaction::class, 'export'])->name('manager.transactions.export');
     Route::resource('transactions', ManagerTransaction::class)
         ->only(['index', 'show'])
         ->names([
@@ -153,21 +155,21 @@ Route::prefix('cashier')->middleware(['auth', 'role:cashier'])->group(function (
     Route::get('/', [CashierDashboard::class, 'index'])->name('cashier.dashboard');
     Route::get('/change-password', [ProfileController::class, 'requestPassword'])->name('cashier.password');
     Route::post('/change-password', [ProfileController::class, 'storeRequest'])->name('cashier.password.store');
-        
+
     Route::resource('products', CashierProduct::class)
-    ->only(['index', 'show'])
-    ->names([
-        'index' => 'cashier.products.index',
-        'show' => 'cashier.products.show',
+        ->only(['index', 'show'])
+        ->names([
+            'index' => 'cashier.products.index',
+            'show' => 'cashier.products.show',
         ]);
-        
-        Route::resource('transactions', CashierTransaction::class)
+
+    Route::resource('transactions', CashierTransaction::class)
         ->only(['index', 'show', 'store', 'update'])
         ->names([
             'index' => 'cashier.transactions.index',
             'show' => 'cashier.transactions.show',
             'store' => 'cashier.transactions.store',
             'update' => 'cashier.transactions.update',
-            ]);
-        Route::get('/transactions/{transaction}/receipt', [CashierTransaction::class, 'receipt'])->name('cashier.transactions.receipt');
+        ]);
+    Route::get('/transactions/{transaction}/receipt', [CashierTransaction::class, 'receipt'])->name('cashier.transactions.receipt');
 });

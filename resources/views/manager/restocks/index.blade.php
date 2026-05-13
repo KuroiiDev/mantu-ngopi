@@ -3,8 +3,29 @@
 @section('title', 'Histori Restock - Mantu-Ngopi')
 
 @section('content')
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <h1 class="text-xl font-bold text-white">Histori Restock</h1>
+
+        <div class="flex flex-wrap items-center gap-3">
+            <form action="{{ route('manager.restocks.index') }}" method="GET" class="flex items-center gap-2">
+                <input type="month" name="month" value="{{ request('month') }}" 
+                    class="bg-gray-800 border border-gray-700 text-white text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block p-2">
+                <button type="submit" class="p-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+                @if(request('month'))
+                    <a href="{{ route('manager.restocks.index') }}" class="p-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg transition-colors">
+                        <i class="fa-solid fa-xmark"></i>
+                    </a>
+                @endif
+            </form>
+
+            <a href="{{ route('manager.restocks.export', ['month' => request('month')]) }}" id="btn-export-restocks"
+                class="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium rounded-lg transition-colors shadow-lg shadow-purple-500/20">
+                <i class="fa-solid fa-file-pdf"></i>
+                Cetak Laporan PDF
+            </a>
+        </div>
     </div>
 
     @if(session('success'))

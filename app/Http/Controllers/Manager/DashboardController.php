@@ -43,7 +43,7 @@ class DashboardController extends Controller
     private function todaySummary()
     {
         $transactions = Transaction::whereDate('created_at', today())
-            ->where('status', 'completed')
+            ->where('status', 'paid')
             ->get();
 
         return [
@@ -55,8 +55,7 @@ class DashboardController extends Controller
     private function weeklySales()
     {
         return Transaction::selectRaw('DATE(created_at) as date, SUM(total) as revenue, COUNT(*) as total_orders')
-            // ->where('status', 'done')
-            ->where('status', 'completed')
+            ->where('status', 'paid')
             ->whereBetween('created_at', [now()->subDays(6)->startOfDay(), now()->endOfDay()])
             ->groupBy('date')
             ->orderBy('date')

@@ -48,6 +48,7 @@
             </div>
         </div>
 
+        {{-- //TODO - Removing Qty and Unit From Cashier --}}
         {{-- Bahan Baku --}}
         @if($product->supplies->count() > 0)
             <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">

@@ -43,7 +43,7 @@
             <div class="flex items-center justify-between mb-3">
                 <span class="text-xs text-gray-400">Restock Hari Ini</span>
                 <div class="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center">
-                    <i class="fa-solid fa-boxes-stacking text-green-400 text-xs"></i>
+                    <i class="fa-solid fa-boxes-stacked text-green-400 text-xs"></i>
                 </div>
             </div>
             <p class="text-2xl font-bold text-white">

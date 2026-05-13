@@ -30,7 +30,7 @@ class TransactionController extends Controller
         ];
 
         $pdf = Pdf::loadView('cashier.transactions.struk', $data);
-        $pdf->setPaper([0, 0, 226.77, 600], 'portrait');
+        $pdf->setPaper([0, 0, 226.77, 800], 'portrait');
 
         return $pdf->download('struk_' . $transaction->id . '_' . now()->timestamp . '.pdf');
     }
